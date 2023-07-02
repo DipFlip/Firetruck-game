@@ -53,6 +53,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SteeringBack"",
+                    ""type"": ""Value"",
+                    ""id"": ""cc292a66-e67d-426b-a08f-4b429cd756cc"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -154,6 +163,39 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""177556e2-7aba-4a3b-baac-c5078511aae4"",
+                    ""path"": ""<Gamepad>/rightStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""SwitchController"",
+                    ""action"": ""SteeringBack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""00813617-aa23-4920-ac4b-e64debd8a43d"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=-1)"",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""SteeringBack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c434c1eb-1ccf-448b-9706-a2c9bea5d362"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale"",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""SteeringBack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -176,6 +218,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay_Steering = m_Gameplay.FindAction("Steering", throwIfNotFound: true);
         m_Gameplay_Drive = m_Gameplay.FindAction("Drive", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
+        m_Gameplay_SteeringBack = m_Gameplay.FindAction("SteeringBack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -240,6 +283,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Steering;
     private readonly InputAction m_Gameplay_Drive;
     private readonly InputAction m_Gameplay_Jump;
+    private readonly InputAction m_Gameplay_SteeringBack;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -247,6 +291,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Steering => m_Wrapper.m_Gameplay_Steering;
         public InputAction @Drive => m_Wrapper.m_Gameplay_Drive;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
+        public InputAction @SteeringBack => m_Wrapper.m_Gameplay_SteeringBack;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -265,6 +310,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @SteeringBack.started += instance.OnSteeringBack;
+            @SteeringBack.performed += instance.OnSteeringBack;
+            @SteeringBack.canceled += instance.OnSteeringBack;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -278,6 +326,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @SteeringBack.started -= instance.OnSteeringBack;
+            @SteeringBack.performed -= instance.OnSteeringBack;
+            @SteeringBack.canceled -= instance.OnSteeringBack;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -318,5 +369,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnSteering(InputAction.CallbackContext context);
         void OnDrive(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnSteeringBack(InputAction.CallbackContext context);
     }
 }

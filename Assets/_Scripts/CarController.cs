@@ -23,6 +23,7 @@ public float brakeForce;
 
     private PlayerControls controls;
     private float steeringInput;
+    private float steeringBackInput;
     private float driveInput;
 
     private void Awake()
@@ -31,6 +32,8 @@ public float brakeForce;
 
         controls.Gameplay.Steering.performed += ctx => steeringInput = ctx.ReadValue<float>();
         controls.Gameplay.Steering.canceled += ctx => steeringInput = 0;
+        controls.Gameplay.SteeringBack.performed += ctx => steeringBackInput = ctx.ReadValue<float>();
+        controls.Gameplay.SteeringBack.canceled += ctx => steeringBackInput = 0;
         controls.Gameplay.Jump.performed += ctx => Debug.Log("Jump");
         controls.Gameplay.Drive.performed += ctx => driveInput = ctx.ReadValue<float>();
         controls.Gameplay.Drive.canceled += ctx => driveInput = 0;
@@ -56,9 +59,11 @@ public float brakeForce;
     private void ApplySteering()
     {
         float currentSteeringAngle = steeringInput * steeringAngle;
-        Debug.Log(currentSteeringAngle);
         frontLeftWheel.steerAngle = currentSteeringAngle;
         frontRightWheel.steerAngle = currentSteeringAngle;
+        float currentSteeringBackAngle = steeringBackInput * steeringAngle;
+        rearLeftWheel.steerAngle = currentSteeringBackAngle;
+        rearRightWheel.steerAngle = currentSteeringBackAngle;
     }
 
     private void ApplyMotorForce()
