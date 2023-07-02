@@ -40,7 +40,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "Scale(factor=-1)",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Steering",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -51,7 +51,18 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "Scale",
-                    "groups": "",
+                    "groups": "Keyboard",
+                    "action": "Steering",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "36783f71-9e91-4199-bec7-81f67d9ba9a1",
+                    "path": "<Gamepad>/leftStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SwitchController",
                     "action": "Steering",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -62,7 +73,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "Scale",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Drive",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -73,18 +84,29 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "Scale(factor=-1)",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Drive",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "095e31b7-bcf1-490b-bbdd-944e3c62771b",
-                    "path": "<Gamepad>/leftStick/up",
+                    "id": "219779f8-24c4-4ec6-8ed9-d0980531a253",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
-                    "processors": "",
-                    "groups": "",
+                    "processors": "Scale",
+                    "groups": "SwitchController",
+                    "action": "Drive",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "73dd0a51-cea6-4027-b394-9c048042e64a",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "Scale(factor=-1)",
+                    "groups": "SwitchController",
                     "action": "Drive",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -95,7 +117,18 @@
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b82c9d9c-43d2-45dd-9585-0ad6dac4d316",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SwitchController",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -103,5 +136,16 @@
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "SwitchController",
+            "bindingGroup": "SwitchController",
+            "devices": []
+        },
+        {
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
+            "devices": []
+        }
+    ]
 }
