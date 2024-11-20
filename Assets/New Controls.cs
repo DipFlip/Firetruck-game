@@ -46,10 +46,19 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""JumpFront"",
                     ""type"": ""Button"",
                     ""id"": ""45c5ded4-edd5-4a12-88a1-1eba9012a9f1"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""JumpBack"",
+                    ""type"": ""Button"",
+                    ""id"": ""3e34c162-214b-4b2b-bad4-56ac7488d9f7"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -149,7 +158,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Jump"",
+                    ""action"": ""JumpFront"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -160,7 +169,29 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""SwitchController"",
-                    ""action"": ""Jump"",
+                    ""action"": ""JumpFront"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9e078615-c2d7-4b43-9ff1-f4385144ae28"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""JumpBack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""060e928c-3c4a-4291-93aa-ed52ea728af5"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""SwitchController"",
+                    ""action"": ""JumpBack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -217,7 +248,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Steering = m_Gameplay.FindAction("Steering", throwIfNotFound: true);
         m_Gameplay_Drive = m_Gameplay.FindAction("Drive", throwIfNotFound: true);
-        m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
+        m_Gameplay_JumpFront = m_Gameplay.FindAction("JumpFront", throwIfNotFound: true);
+        m_Gameplay_JumpBack = m_Gameplay.FindAction("JumpBack", throwIfNotFound: true);
         m_Gameplay_SteeringBack = m_Gameplay.FindAction("SteeringBack", throwIfNotFound: true);
     }
 
@@ -287,7 +319,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_Gameplay_Steering;
     private readonly InputAction m_Gameplay_Drive;
-    private readonly InputAction m_Gameplay_Jump;
+    private readonly InputAction m_Gameplay_JumpFront;
+    private readonly InputAction m_Gameplay_JumpBack;
     private readonly InputAction m_Gameplay_SteeringBack;
     public struct GameplayActions
     {
@@ -295,7 +328,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Steering => m_Wrapper.m_Gameplay_Steering;
         public InputAction @Drive => m_Wrapper.m_Gameplay_Drive;
-        public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
+        public InputAction @JumpFront => m_Wrapper.m_Gameplay_JumpFront;
+        public InputAction @JumpBack => m_Wrapper.m_Gameplay_JumpBack;
         public InputAction @SteeringBack => m_Wrapper.m_Gameplay_SteeringBack;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
@@ -312,9 +346,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Drive.started += instance.OnDrive;
             @Drive.performed += instance.OnDrive;
             @Drive.canceled += instance.OnDrive;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
+            @JumpFront.started += instance.OnJumpFront;
+            @JumpFront.performed += instance.OnJumpFront;
+            @JumpFront.canceled += instance.OnJumpFront;
+            @JumpBack.started += instance.OnJumpBack;
+            @JumpBack.performed += instance.OnJumpBack;
+            @JumpBack.canceled += instance.OnJumpBack;
             @SteeringBack.started += instance.OnSteeringBack;
             @SteeringBack.performed += instance.OnSteeringBack;
             @SteeringBack.canceled += instance.OnSteeringBack;
@@ -328,9 +365,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Drive.started -= instance.OnDrive;
             @Drive.performed -= instance.OnDrive;
             @Drive.canceled -= instance.OnDrive;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
+            @JumpFront.started -= instance.OnJumpFront;
+            @JumpFront.performed -= instance.OnJumpFront;
+            @JumpFront.canceled -= instance.OnJumpFront;
+            @JumpBack.started -= instance.OnJumpBack;
+            @JumpBack.performed -= instance.OnJumpBack;
+            @JumpBack.canceled -= instance.OnJumpBack;
             @SteeringBack.started -= instance.OnSteeringBack;
             @SteeringBack.performed -= instance.OnSteeringBack;
             @SteeringBack.canceled -= instance.OnSteeringBack;
@@ -373,7 +413,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnSteering(InputAction.CallbackContext context);
         void OnDrive(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
+        void OnJumpFront(InputAction.CallbackContext context);
+        void OnJumpBack(InputAction.CallbackContext context);
         void OnSteeringBack(InputAction.CallbackContext context);
     }
 }

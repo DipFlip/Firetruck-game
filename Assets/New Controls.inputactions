@@ -24,10 +24,19 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Jump",
+                    "name": "JumpFront",
                     "type": "Button",
                     "id": "45c5ded4-edd5-4a12-88a1-1eba9012a9f1",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "JumpBack",
+                    "type": "Button",
+                    "id": "3e34c162-214b-4b2b-bad4-56ac7488d9f7",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -127,7 +136,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Jump",
+                    "action": "JumpFront",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -138,7 +147,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "SwitchController",
-                    "action": "Jump",
+                    "action": "JumpFront",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9e078615-c2d7-4b43-9ff1-f4385144ae28",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "JumpBack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "060e928c-3c4a-4291-93aa-ed52ea728af5",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SwitchController",
+                    "action": "JumpBack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

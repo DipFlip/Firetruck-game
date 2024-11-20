@@ -34,7 +34,6 @@ public float brakeForce;
         controls.Gameplay.Steering.canceled += ctx => steeringInput = 0;
         controls.Gameplay.SteeringBack.performed += ctx => steeringBackInput = ctx.ReadValue<float>();
         controls.Gameplay.SteeringBack.canceled += ctx => steeringBackInput = 0;
-        controls.Gameplay.Jump.performed += ctx => Debug.Log("Jump");
         controls.Gameplay.Drive.performed += ctx => driveInput = ctx.ReadValue<float>();
         controls.Gameplay.Drive.canceled += ctx => driveInput = 0;
     }
@@ -69,17 +68,14 @@ public float brakeForce;
     private void ApplyMotorForce()
     {
         float currentMotorForce = - driveInput * motorForce;
-        Debug.Log(driveInput);
         // Check if the car's rpm and the drive input have opposite signs
 
         if (Mathf.Abs(frontRightWheel.rpm) > 0.1f && Mathf.Sign(frontRightWheel.rpm) == Mathf.Sign(driveInput))
         {
-            Debug.Log("Applying brakes");
             ApplyBrakeForce(brakeForce);
         }
         else
         {
-            Debug.Log("Releasing brakes");
             ReleaseBrakes();
             rearLeftWheel.motorTorque = currentMotorForce;
             rearRightWheel.motorTorque = currentMotorForce;
