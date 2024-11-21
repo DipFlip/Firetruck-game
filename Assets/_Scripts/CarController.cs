@@ -11,10 +11,10 @@ public class CarController : MonoBehaviour
     public WheelCollider rearRightWheel;
 
     public GameObject frontLeftWheelModel;
-public GameObject frontRightWheelModel;
-public GameObject rearLeftWheelModel;
-public GameObject rearRightWheelModel;
-public float brakeForce;
+    public GameObject frontRightWheelModel;
+    public GameObject rearLeftWheelModel;
+    public GameObject rearRightWheelModel;
+    public float brakeForce;
 
 
 

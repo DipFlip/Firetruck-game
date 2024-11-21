@@ -28,7 +28,7 @@ public class WaterGunController : MonoBehaviour
             // Apply force in the opposite direction of where the water gun is pointing
             Vector3 forceDirection = -transform.forward;
             float carZAngle = Mathf.Abs(NormalizeAngle(carRigidbody.rotation.eulerAngles.z));
-            Vector3 force = forceDirection * waterRecoilForce * Mathf.Pow(carZAngle, 0.2f);
+            Vector3 force = forceDirection * waterRecoilForce * Mathf.Pow(carZAngle, 0.5f);
             
             // Apply force at the position of the water gun
             carRigidbody.AddForceAtPosition(force, transform.position, ForceMode.Force);
