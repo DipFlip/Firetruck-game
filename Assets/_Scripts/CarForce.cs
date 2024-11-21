@@ -41,12 +41,17 @@ public class CarForce : MonoBehaviour
         // Apply downward force for stability
         rb.AddForce(Vector3.down * downwardForce);
         float zAngle = NormalizeAngle(rb.rotation.eulerAngles.z); // Normalize the angle
-        Debug.Log(zAngle);
+        float xAngle = NormalizeAngle(rb.rotation.eulerAngles.x); // Normalize the angle
         // Apply uprighting force to prevent the car from falling over
-        if (Mathf.Abs(zAngle) > 10f)
+        if ((Mathf.Abs(zAngle) > 10f) && (Mathf.Abs(xAngle) < 20f))
         {
             // Apply uprighting torque along the forward axis to prevent horizontal rotation
-            rb.AddTorque(transform.forward * uprightingForce * Mathf.Pow(zAngle, 5), ForceMode.Acceleration);
+            rb.AddTorque(transform.forward * uprightingForce * Mathf.Pow(zAngle, 1), ForceMode.Acceleration);
+        }
+        else if ((Mathf.Abs(zAngle) > 100f) && (Mathf.Abs(xAngle) < 30f))
+        {
+            // Apply uprighting torque along the forward axis to prevent horizontal rotation
+            rb.AddTorque(transform.forward * uprightingForce * 10 * Mathf.Pow(zAngle, 1), ForceMode.Acceleration);
         }
     }
 

@@ -71,6 +71,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""WaterGunBack"",
+                    ""type"": ""Value"",
+                    ""id"": ""d3f43e78-563b-4f8f-9ff7-8716902b0ffa"",
+                    ""expectedControlType"": ""Stick"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -187,22 +196,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""060e928c-3c4a-4291-93aa-ed52ea728af5"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""SwitchController"",
                     ""action"": ""JumpBack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""177556e2-7aba-4a3b-baac-c5078511aae4"",
-                    ""path"": ""<Gamepad>/rightStick/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""SwitchController"",
-                    ""action"": ""SteeringBack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -225,6 +223,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": ""Scale"",
                     ""groups"": ""Keyboard"",
                     ""action"": ""SteeringBack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f0058542-3069-4581-853f-a69438c25ce8"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WaterGunBack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -251,6 +260,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay_JumpFront = m_Gameplay.FindAction("JumpFront", throwIfNotFound: true);
         m_Gameplay_JumpBack = m_Gameplay.FindAction("JumpBack", throwIfNotFound: true);
         m_Gameplay_SteeringBack = m_Gameplay.FindAction("SteeringBack", throwIfNotFound: true);
+        m_Gameplay_WaterGunBack = m_Gameplay.FindAction("WaterGunBack", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -322,6 +332,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_JumpFront;
     private readonly InputAction m_Gameplay_JumpBack;
     private readonly InputAction m_Gameplay_SteeringBack;
+    private readonly InputAction m_Gameplay_WaterGunBack;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -331,6 +342,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @JumpFront => m_Wrapper.m_Gameplay_JumpFront;
         public InputAction @JumpBack => m_Wrapper.m_Gameplay_JumpBack;
         public InputAction @SteeringBack => m_Wrapper.m_Gameplay_SteeringBack;
+        public InputAction @WaterGunBack => m_Wrapper.m_Gameplay_WaterGunBack;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -355,6 +367,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SteeringBack.started += instance.OnSteeringBack;
             @SteeringBack.performed += instance.OnSteeringBack;
             @SteeringBack.canceled += instance.OnSteeringBack;
+            @WaterGunBack.started += instance.OnWaterGunBack;
+            @WaterGunBack.performed += instance.OnWaterGunBack;
+            @WaterGunBack.canceled += instance.OnWaterGunBack;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -374,6 +389,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SteeringBack.started -= instance.OnSteeringBack;
             @SteeringBack.performed -= instance.OnSteeringBack;
             @SteeringBack.canceled -= instance.OnSteeringBack;
+            @WaterGunBack.started -= instance.OnWaterGunBack;
+            @WaterGunBack.performed -= instance.OnWaterGunBack;
+            @WaterGunBack.canceled -= instance.OnWaterGunBack;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -416,5 +434,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnJumpFront(InputAction.CallbackContext context);
         void OnJumpBack(InputAction.CallbackContext context);
         void OnSteeringBack(InputAction.CallbackContext context);
+        void OnWaterGunBack(InputAction.CallbackContext context);
     }
 }

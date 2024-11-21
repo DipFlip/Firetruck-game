@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "WaterGunBack",
+                    "type": "Value",
+                    "id": "d3f43e78-563b-4f8f-9ff7-8716902b0ffa",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -165,22 +174,11 @@
                 {
                     "name": "",
                     "id": "060e928c-3c4a-4291-93aa-ed52ea728af5",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "SwitchController",
                     "action": "JumpBack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "177556e2-7aba-4a3b-baac-c5078511aae4",
-                    "path": "<Gamepad>/rightStick/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "SwitchController",
-                    "action": "SteeringBack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -203,6 +201,17 @@
                     "processors": "Scale",
                     "groups": "Keyboard",
                     "action": "SteeringBack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f0058542-3069-4581-853f-a69438c25ce8",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WaterGunBack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
