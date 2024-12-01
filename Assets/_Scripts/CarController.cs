@@ -79,6 +79,8 @@ public class CarController : MonoBehaviour
             ReleaseBrakes();
             rearLeftWheel.motorTorque = currentMotorForce;
             rearRightWheel.motorTorque = currentMotorForce;
+            frontLeftWheel.motorTorque = currentMotorForce;
+            frontRightWheel.motorTorque = currentMotorForce;
         }
     }
     private void UpdateWheelPoses()

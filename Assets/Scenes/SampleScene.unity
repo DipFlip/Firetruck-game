@@ -3126,6 +3126,16 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198000010148556592, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
+        type: 3}
+      propertyPath: InheritVelocityModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000010148556592, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
+        type: 3}
+      propertyPath: InheritVelocityModule.m_Curve.scalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 198000010596725160, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
         type: 3}
       propertyPath: playOnAwake
@@ -3133,8 +3143,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198000010596725160, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
         type: 3}
+      propertyPath: InheritVelocityModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000010596725160, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
+        type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000010596725160, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
+        type: 3}
+      propertyPath: InheritVelocityModule.m_Curve.scalar
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198000010596725160, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
         type: 3}
@@ -3146,10 +3166,30 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198000011579028428, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
+        type: 3}
+      propertyPath: InheritVelocityModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000011579028428, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
+        type: 3}
+      propertyPath: InheritVelocityModule.m_Curve.scalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 198000014159833656, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
         type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000014159833656, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
+        type: 3}
+      propertyPath: InheritVelocityModule.m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000014159833656, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
+        type: 3}
+      propertyPath: InheritVelocityModule.enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198000014159833656, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
         type: 3}
@@ -3164,6 +3204,11 @@ PrefabInstance:
     - target: {fileID: 198000014159833656, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
         type: 3}
       propertyPath: InitialModule.startSize.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000014159833656, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
+        type: 3}
+      propertyPath: InheritVelocityModule.m_Curve.scalar
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198000014159833656, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
@@ -6519,7 +6564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterEffect: {fileID: 359542721}
   secondWaterEffect: {fileID: 220031276}
-  waterRecoilForce: 2500
+  waterRecoilForce: 1800
   carRigidbody: {fileID: 1370250617}
 --- !u!1001 &1905784526
 PrefabInstance:
@@ -6616,6 +6661,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 198020576693072572, guid: 3d19250bdd4e0df4c8da855e85a8d70b,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 198020576693072572, guid: 3d19250bdd4e0df4c8da855e85a8d70b,
         type: 3}
@@ -7179,7 +7229,7 @@ PrefabInstance:
     - target: {fileID: 3295110808438991029, guid: 6811f1b1861f8624289c86dbac1ac986,
         type: 3}
       propertyPath: motorForce
-      value: 6000
+      value: 8000
       objectReference: {fileID: 0}
     - target: {fileID: 3295110808438991029, guid: 6811f1b1861f8624289c86dbac1ac986,
         type: 3}
